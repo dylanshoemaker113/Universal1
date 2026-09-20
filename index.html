@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Universal — nearest Catholic church</title>
+<meta name="description" content="Find the nearest Catholic churches and see which way to head.">
+<meta name="theme-color" content="#14181C">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="screen">
+
+  <header class="masthead">
+    <h1>Universal</h1>
+    <p class="tagline">Find the nearest Catholic church, and which way to walk.</p>
+  </header>
+
+  <!-- Intro state: before permission / before a search has run -->
+  <section id="intro" class="state">
+    <svg class="rose" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="56" class="rose-ring"/>
+      <circle cx="60" cy="60" r="2.5" class="rose-pivot"/>
+      <path d="M60 12 L67 60 L60 66 L53 60 Z" class="rose-north"/>
+      <path d="M60 108 L67 60 L60 54 L53 60 Z" class="rose-south"/>
+    </svg>
+    <button id="locate-btn" class="primary-btn" type="button">Find churches</button>
+    <p class="hint">Uses your location and your phone's compass. Nothing is stored or sent anywhere but to OpenStreetMap.</p>
+  </section>
+
+  <!-- Loading state -->
+  <section id="loading" class="state" hidden>
+    <p class="status" id="status-text">Locating you…</p>
+  </section>
+
+  <!-- Error state -->
+  <section id="error" class="state" hidden>
+    <p class="status error-text" id="error-text"></p>
+    <button id="retry-btn" class="primary-btn" type="button">Try again</button>
+  </section>
+
+  <!-- Results state -->
+  <section id="results" class="state" hidden>
+    <h2 class="results-heading">Nearest churches</h2>
+    <ul class="church-list" id="church-list"></ul>
+    <p class="calibrate-note" id="calibrate-note" hidden>If the arrows seem off, wave your phone in a figure eight to calibrate its compass.</p>
+  </section>
+
+</main>
+
+<template id="church-row-template">
+  <li class="church-row">
+    <svg class="dial" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" class="dial-ring"/>
+      <g class="needle">
+        <path d="M32 8 L37 32 L32 37 L27 32 Z" class="needle-north"/>
+        <path d="M32 56 L37 32 L32 27 L27 32 Z" class="needle-south"/>
+      </g>
+    </svg>
+    <div class="church-info">
+      <p class="church-name"></p>
+      <p class="church-meta"><span class="church-distance"></span> · <span class="church-dir"></span></p>
+    </div>
+  </li>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>

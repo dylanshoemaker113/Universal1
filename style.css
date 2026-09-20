@@ -1,0 +1,237 @@
+:root {
+  --bg: #14181C;
+  --surface: #1B2025;
+  --text: #EDEAE1;
+  --text-dim: #8E969D;
+  --brass: #C79A56;
+  --brass-dim: #8A6B3E;
+  --red: #B5463B;
+  --line: #2A3137;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+.screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 24px calc(32px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+}
+
+.masthead {
+  margin-bottom: 32px;
+}
+
+.masthead h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+  color: var(--brass);
+}
+
+.tagline {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 34ch;
+}
+
+.state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.state[hidden] { display: none; }
+
+/* Intro compass rose */
+.rose {
+  width: 140px;
+  height: 140px;
+}
+
+.rose-ring {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.rose-pivot {
+  fill: var(--text-dim);
+}
+
+.rose-north {
+  fill: var(--brass);
+}
+
+.rose-south {
+  fill: var(--text-dim);
+  opacity: 0.4;
+}
+
+.primary-btn {
+  appearance: none;
+  border: 1px solid var(--brass);
+  background: transparent;
+  color: var(--brass);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.primary-btn:hover,
+.primary-btn:focus-visible {
+  background: var(--brass);
+  color: var(--bg);
+}
+
+.primary-btn:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+.hint {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  max-width: 32ch;
+  margin: 0;
+}
+
+.status {
+  color: var(--text-dim);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.error-text {
+  color: var(--red);
+}
+
+/* Results */
+#results {
+  justify-content: flex-start;
+  align-items: stretch;
+  text-align: left;
+  gap: 0;
+}
+
+.results-heading {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  margin: 0 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.church-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.church-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.church-row:last-child {
+  border-bottom: none;
+}
+
+.dial {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.dial-ring {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.needle {
+  transform-origin: 32px 32px;
+  transition: transform 0.25s ease-out;
+}
+
+.needle-north {
+  fill: var(--brass);
+}
+
+.needle-south {
+  fill: var(--red);
+}
+
+.church-info {
+  min-width: 0;
+}
+
+.church-name {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin: 0 0 4px;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.church-meta {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.church-distance {
+  color: var(--brass);
+  font-weight: 600;
+}
+
+.calibrate-note {
+  margin: 20px 0 0;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .needle {
+    transition: none;
+  }
+}
